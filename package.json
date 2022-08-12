@@ -1,0 +1,8 @@
+{
+  "name": "rules_js_node_gyp",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
+}
