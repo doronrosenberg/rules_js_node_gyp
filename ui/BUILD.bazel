@@ -2,7 +2,6 @@ load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary", "nodejs_test")
 load("@npmv2//:parcel/package_json.bzl", "bin")
 load("@npm//parcel:index.bzl", "parcel")
 
-# UI production build using parcel.
 bin.parcel(
     name = "build",
     srcs = [
