@@ -4,5 +4,9 @@
   "dependencies": {},
   "devDependencies": {
     "parcel": "^2.7.0"
-  }
+  },
+  "scripts": {
+    "build": "parcel build ui/index.html"
+  },
+  "type": "module"
 }

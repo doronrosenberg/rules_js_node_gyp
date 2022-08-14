@@ -62,6 +62,9 @@ load("@aspect_rules_js//npm:npm_import.bzl", "npm_translate_lock")
 
 npm_translate_lock(
     name = "npmv2",
+    lifecycle_hooks_exclude = [
+        "@parcel/watcher",
+    ],
     package_json = "//:package.json",
     yarn_lock = "//:yarn.lock",
 )
