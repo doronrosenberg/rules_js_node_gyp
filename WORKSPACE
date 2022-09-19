@@ -23,11 +23,12 @@ load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories")
 
 node_repositories(
     node_repositories = {
-        "16.14.0-darwin_amd64": ("node-v16.14.0-darwin-x64.tar.gz", "node-v16.14.0-darwin-x64", "26702ab17903ad1ea4e13133bd423c1176db3384b8cf08559d385817c9ca58dc"),
-        "16.14.0-darwin_arm64": ("node-v16.14.0-darwin-x64.tar.gz", "node-v16.14.0-darwin-x64", "26702ab17903ad1ea4e13133bd423c1176db3384b8cf08559d385817c9ca58dc"),
-        "16.14.0-linux_amd64": ("node-v16.14.0-linux-x64.tar.xz", "node-v16.14.0-linux-x64", "0570b9354959f651b814e56a4ce98d4a067bf2385b9a0e6be075739bc65b0fae"),
+        "18.9.0-darwin_amd64": ("node-v18.9.0-darwin-x64.tar.gz", "node-v18.9.0-darwin-x64", "dce1144cbfc01e03c2e84582461c3ce83541968b2b52a3d3a6f2bbfb09183fba"),
+        "18.9.0-darwin_arm64": ("node-v18.9.0-darwin-x64.tar.gz", "node-v18.9.0-darwin-x64", "dce1144cbfc01e03c2e84582461c3ce83541968b2b52a3d3a6f2bbfb09183fba"),
+        "18.9.0-linux_amd64": ("node-v18.9.0-linux-x64.tar.xz", "node-v18.9.0-linux-x64", "0137e43f5492dd97b6ef1f39ea4581975016e5f1e70db461d7292c6853ace066"),
     },
-    node_version = "16.14.0",
+    node_version = "18.9.0",
+    yarn_version = "1.22.19",
 )
 
 load("@build_bazel_rules_nodejs//:index.bzl", "yarn_install")
@@ -42,9 +43,9 @@ yarn_install(
 ### rules_js
 http_archive(
     name = "aspect_rules_js",
-    sha256 = "538049993bec3ee1ae9b1c3cd669156bca04eb67027b222883e47b0a2aed2e67",
-    strip_prefix = "rules_js-1.0.0",
-    url = "https://github.com/aspect-build/rules_js/archive/refs/tags/v1.0.0.tar.gz",
+    sha256 = "0707a425093704fab05fb91c3a4b62cf22dca18ea334d8a72f156d4c18e8db90",
+    strip_prefix = "rules_js-1.3.1",
+    url = "https://github.com/aspect-build/rules_js/archive/refs/tags/v1.3.1.tar.gz",
 )
 
 load("@aspect_rules_js//js:repositories.bzl", "rules_js_dependencies")
@@ -62,11 +63,12 @@ load("@aspect_rules_js//npm:npm_import.bzl", "npm_translate_lock")
 
 npm_translate_lock(
     name = "npmv2",
-    lifecycle_hooks_exclude = [
-        "@parcel/watcher",
-    ],
+    lifecycle_hooks_no_sandbox = False,
     package_json = "//:package.json",
     yarn_lock = "//:yarn.lock",
+    lifecycle_hooks_exclude = [
+        "gc-stats",
+    ],
 )
 
 load("@npmv2//:repositories.bzl", "npm_repositories")

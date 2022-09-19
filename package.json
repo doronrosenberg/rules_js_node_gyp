@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "dependencies": {},
   "devDependencies": {
-    "parcel": "^2.7.0"
+    "parcel": "^2.7.0",
+    "gc-stats": "^1.4.0"
   },
   "scripts": {
     "build": "parcel build ui/index.html"

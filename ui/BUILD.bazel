@@ -14,7 +14,7 @@ bin.parcel(
         "build",
         "$(execpath index.html)",
         "--dist-dir",
-        "$(@D)",
+        "ui/build",
     ],
     output_dir = True,
 )
